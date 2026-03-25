@@ -8,7 +8,7 @@ import (
 	"net/url"
 	"strings"
 
-	"github.com/projectdiscovery/cvemap/pkg/types"
+	"github.com/projectdiscovery/vulnx/pkg/types"
 	"github.com/projectdiscovery/gologger"
 	retryablehttp "github.com/projectdiscovery/retryablehttp-go"
 	"github.com/projectdiscovery/utils/env"
@@ -18,17 +18,17 @@ import (
 const xPDCPHeaderKey = "X-PDCP-Key"
 
 var (
-	BaseUrl         = env.GetEnvOrDefault("CVEMAP_API_URL", "https://cve.projectdiscovery.io/api/v1")
+	BaseUrl         = env.GetEnvOrDefault("VULNX_API_URL", "https://cve.projectdiscovery.io/api/v1")
 	ErrUnAuthorized = errorutil.New(`unauthorized: 401 (get your free api key from https://cloud.projectdiscovery.io)`)
 )
 
-type Cvemap struct {
+type Vulnx struct {
 	opts   *Options
 	client *retryablehttp.Client
 }
 
 type Options struct {
-	// ApiKey is the api key for the cvemap api
+	// ApiKey is the api key for the vulnx api
 	ApiKey string
 	// RetryableHttpOptions contains options for the http client (optional)
 	RetryableHttpOptions *retryablehttp.Options
@@ -38,7 +38,7 @@ type Options struct {
 	Debug bool
 }
 
-func NewCvemap(opts *Options) (*Cvemap, error) {
+func NewVulnx(opts *Options) (*Vulnx, error) {
 	if opts == nil {
 		return nil, fmt.Errorf("Options cannot be nil")
 	}
@@ -54,13 +54,13 @@ func NewCvemap(opts *Options) (*Cvemap, error) {
 	}
 	httpClient := retryablehttp.NewClient(clientOpts)
 
-	return &Cvemap{
+	return &Vulnx{
 		opts:   opts,
 		client: httpClient,
 	}, nil
 }
 
-func (c *Cvemap) GetCvesByIds(cveIds []string) (*types.CVEBulkData, error) {
+func (c *Vulnx) GetCvesByIds(cveIds []string) (*types.CVEBulkData, error) {
 	url := fmt.Sprintf("%s/cves", BaseUrl)
 	// send only 100 cve ids max
 	if len(cveIds) > 100 {
@@ -102,7 +102,7 @@ func (c *Cvemap) GetCvesByIds(cveIds []string) (*types.CVEBulkData, error) {
 	return &cvesInBulk, nil
 }
 
-func (c *Cvemap) GetCvesByFilters(encodedParams string) (*types.CVEBulkData, error) {
+func (c *Vulnx) GetCvesByFilters(encodedParams string) (*types.CVEBulkData, error) {
 	url := fmt.Sprintf("%s/cves?%s", BaseUrl, encodedParams)
 	// Send an HTTP GET request
 	response, err := c.makeGetRequest(url)
@@ -128,7 +128,7 @@ func (c *Cvemap) GetCvesByFilters(encodedParams string) (*types.CVEBulkData, err
 	return &cvesInBulk, nil
 }
 
-func (c *Cvemap) GetCvesBySearchString(query string, limit, offset int) (*types.CVEBulkData, error) {
+func (c *Vulnx) GetCvesBySearchString(query string, limit, offset int) (*types.CVEBulkData, error) {
 	u, err := url.Parse(fmt.Sprintf("%s/cves/search", BaseUrl))
 	if err != nil {
 		return nil, err
@@ -163,7 +163,7 @@ func (c *Cvemap) GetCvesBySearchString(query string, limit, offset int) (*types.
 }
 
 // all the root level fields are supported
-func (c *Cvemap) GetCvesForSpecificFields(fields []string, encodedParams string, limit, offset int) (*types.CVEBulkData, error) {
+func (c *Vulnx) GetCvesForSpecificFields(fields []string, encodedParams string, limit, offset int) (*types.CVEBulkData, error) {
 	url := fmt.Sprintf("%s/cves?fields=%s&%s&limit=%v&offset=%v", BaseUrl, strings.Join(fields, ","), encodedParams, limit, offset)
 	// Send an HTTP GET request
 	response, err := c.makeGetRequest(url)
@@ -189,7 +189,7 @@ func (c *Cvemap) GetCvesForSpecificFields(fields []string, encodedParams string,
 	return &cvesInBulk, nil
 }
 
-func (c *Cvemap) makeGetRequest(url string) (*http.Response, error) {
+func (c *Vulnx) makeGetRequest(url string) (*http.Response, error) {
 	req, err := retryablehttp.NewRequest("GET", url, nil)
 	if err != nil {
 		gologger.Fatal().Msgf("Error creating request: %s\n", err)
@@ -198,7 +198,7 @@ func (c *Cvemap) makeGetRequest(url string) (*http.Response, error) {
 	return c.doRequest(req)
 }
 
-func (c *Cvemap) doRequest(req *retryablehttp.Request) (*http.Response, error) {
+func (c *Vulnx) doRequest(req *retryablehttp.Request) (*http.Response, error) {
 	if c.opts.Debug {
 		// dump request
 		dump, err := req.Dump()
