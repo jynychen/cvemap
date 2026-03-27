@@ -8,7 +8,7 @@ import (
 	"runtime"
 	"strings"
 
-	"github.com/projectdiscovery/vulnx/pkg/types"
+	"github.com/projectdiscovery/vulnx/v2/pkg/types"
 	"github.com/projectdiscovery/gologger"
 	fileutil "github.com/projectdiscovery/utils/file"
 )
@@ -64,7 +64,7 @@ func getLatestVersionCVSSScore(cvss types.CvssMetrics) float64 {
 
 func isDefaultRun(opts *Options) bool {
 	options := len(opts.CveIds) == 0 && len(opts.CweIds) == 0 && len(opts.Vendor) == 0 && len(opts.Product) == 0 && len(opts.Severity) == 0 && len(opts.CvssScore) == 0 && len(opts.EpssPercentile) == 0 && len(opts.Assignees) == 0 && len(opts.Reference) == 0 && opts.EpssScore == "" && opts.Cpe == "" && opts.VulnStatus == "" && opts.Age == ""
-	filters := opts.Kev == "" && opts.Hackerone == "" && opts.HasNucleiTemplate == "" && opts.HasPoc == "" && opts.RemotlyExploitable == "" && opts.Search == ""
+	filters := opts.Kev == "" && opts.Hackerone == "" && opts.HasNucleiTemplate == "" && opts.HasPoc == "" && opts.RemotelyExploitable == "" && opts.Search == ""
 	return options && filters && !fileutil.HasStdin()
 }
 

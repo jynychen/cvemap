@@ -8,8 +8,8 @@ import (
 	"strings"
 
 	"github.com/projectdiscovery/gologger"
-	"github.com/projectdiscovery/vulnx"
-	"github.com/projectdiscovery/vulnx/pkg/types"
+	"github.com/projectdiscovery/vulnx/v2"
+	"github.com/projectdiscovery/vulnx/v2/pkg/types"
 )
 
 var cveData *types.CVEBulkData

@@ -1,0 +1,3 @@
+[default.extend-words]
+# from external goflags package
+Allowd = "Allowd"

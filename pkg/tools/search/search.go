@@ -5,7 +5,7 @@ import (
 	"encoding/json"
 
 	"github.com/mark3labs/mcp-go/mcp"
-	"github.com/projectdiscovery/vulnx"
+	"github.com/projectdiscovery/vulnx/v2"
 )
 
 // Handler provides high-level helpers around the vulnerability search

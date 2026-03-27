@@ -8,13 +8,13 @@ import (
 	"os"
 	"strings"
 
-	"github.com/projectdiscovery/vulnx"
+	"github.com/projectdiscovery/vulnx/v2"
 	"github.com/projectdiscovery/gologger"
 	fileutil "github.com/projectdiscovery/utils/file"
 	"github.com/spf13/cobra"
 
-	"github.com/projectdiscovery/vulnx/pkg/tools/id"
-	"github.com/projectdiscovery/vulnx/pkg/tools/renderer"
+	"github.com/projectdiscovery/vulnx/v2/pkg/tools/id"
+	"github.com/projectdiscovery/vulnx/v2/pkg/tools/renderer"
 )
 
 var ( //nolint

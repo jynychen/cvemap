@@ -25,7 +25,7 @@ builds:
     binary: vulnx
     main: cmd/vulnx/main.go
     ldflags:
-      - -s -w -X github.com/projectdiscovery/vulnx/cmd/vulnx/clis.Version={{.Version}}
+      - -s -w -X github.com/projectdiscovery/vulnx/v2/cmd/vulnx/clis.Version={{.Version}}
 
 archives:
   - id: vulnx

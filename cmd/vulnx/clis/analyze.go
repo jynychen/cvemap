@@ -8,12 +8,12 @@ import (
 	"sort"
 	"strings"
 
-	"github.com/projectdiscovery/vulnx"
+	"github.com/projectdiscovery/vulnx/v2"
 	"github.com/projectdiscovery/gologger"
 	"github.com/spf13/cobra"
 
 	"github.com/jedib0t/go-pretty/v6/table"
-	analyzetool "github.com/projectdiscovery/vulnx/pkg/tools/analyze"
+	analyzetool "github.com/projectdiscovery/vulnx/v2/pkg/tools/analyze"
 )
 
 var (
