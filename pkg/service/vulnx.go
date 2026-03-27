@@ -8,7 +8,7 @@ import (
 	"net/url"
 	"strings"
 
-	"github.com/projectdiscovery/vulnx/pkg/types"
+	"github.com/projectdiscovery/vulnx/v2/pkg/types"
 	"github.com/projectdiscovery/gologger"
 	retryablehttp "github.com/projectdiscovery/retryablehttp-go"
 	"github.com/projectdiscovery/utils/env"

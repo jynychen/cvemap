@@ -1,7 +1,7 @@
 package renderer
 
 import (
-	"github.com/projectdiscovery/vulnx"
+	"github.com/projectdiscovery/vulnx/v2"
 )
 
 // LayoutLine represents a single line in the layout configuration

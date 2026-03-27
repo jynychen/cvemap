@@ -7,7 +7,7 @@ import (
 	"strings"
 
 	"github.com/mark3labs/mcp-go/mcp"
-	"github.com/projectdiscovery/vulnx"
+	"github.com/projectdiscovery/vulnx/v2"
 )
 
 // Handler wraps the vulnx.Client for faceted vulnerability analysis operations.

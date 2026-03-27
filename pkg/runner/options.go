@@ -31,7 +31,7 @@ type Options struct {
 	HasNucleiTemplate  string
 	HasPoc             string
 	Search             string
-	RemotlyExploitable string
+	RemotelyExploitable string
 	EnablePageKeys     bool
 	Json               bool
 	Limit              int

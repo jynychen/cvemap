@@ -1,4 +1,4 @@
-module github.com/projectdiscovery/vulnx
+module github.com/projectdiscovery/vulnx/v2
 
 go 1.24.0
 

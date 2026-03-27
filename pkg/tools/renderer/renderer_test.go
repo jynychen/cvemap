@@ -4,7 +4,7 @@ import (
 	"strings"
 	"testing"
 
-	"github.com/projectdiscovery/vulnx"
+	"github.com/projectdiscovery/vulnx/v2"
 )
 
 func TestRender(t *testing.T) {

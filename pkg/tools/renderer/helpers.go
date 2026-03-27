@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"strings"
 
-	"github.com/projectdiscovery/vulnx"
+	"github.com/projectdiscovery/vulnx/v2"
 )
 
 // truncateList formats a string slice to show up to specified items, then " +N" for additional items

@@ -7,7 +7,7 @@ import (
 	"github.com/projectdiscovery/gologger"
 	"github.com/spf13/cobra"
 
-	"github.com/projectdiscovery/vulnx/pkg/tools/filters"
+	"github.com/projectdiscovery/vulnx/v2/pkg/tools/filters"
 )
 
 var (

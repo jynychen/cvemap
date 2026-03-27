@@ -5,7 +5,7 @@ import (
 	"fmt"
 
 	"github.com/mark3labs/mcp-go/mcp"
-	"github.com/projectdiscovery/vulnx"
+	"github.com/projectdiscovery/vulnx/v2"
 )
 
 // PromptTemplate defines the interface for vulnerability analysis prompt templates

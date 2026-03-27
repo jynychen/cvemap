@@ -8,12 +8,12 @@ import (
 	"strconv"
 	"strings"
 
-	"github.com/projectdiscovery/vulnx"
+	"github.com/projectdiscovery/vulnx/v2"
 	"github.com/projectdiscovery/gologger"
 	"github.com/spf13/cobra"
 
-	"github.com/projectdiscovery/vulnx/pkg/tools/renderer"
-	searchtool "github.com/projectdiscovery/vulnx/pkg/tools/search"
+	"github.com/projectdiscovery/vulnx/v2/pkg/tools/renderer"
+	searchtool "github.com/projectdiscovery/vulnx/v2/pkg/tools/search"
 )
 
 var (

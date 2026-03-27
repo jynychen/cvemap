@@ -6,7 +6,7 @@ import (
 	"strings"
 	"syscall"
 
-	"github.com/projectdiscovery/vulnx/pkg/tools/filters"
+	"github.com/projectdiscovery/vulnx/v2/pkg/tools/filters"
 	"github.com/projectdiscovery/gologger"
 	"github.com/projectdiscovery/utils/auth/pdcp"
 	"github.com/spf13/cobra"

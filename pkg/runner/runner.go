@@ -13,8 +13,8 @@ import (
 
 	"github.com/eiannone/keyboard"
 	"github.com/jedib0t/go-pretty/v6/table"
-	"github.com/projectdiscovery/vulnx/pkg/service"
-	"github.com/projectdiscovery/vulnx/pkg/types"
+	"github.com/projectdiscovery/vulnx/v2/pkg/service"
+	"github.com/projectdiscovery/vulnx/v2/pkg/types"
 	"github.com/projectdiscovery/goflags"
 	"github.com/projectdiscovery/gologger"
 	"github.com/projectdiscovery/utils/auth/pdcp"
@@ -27,7 +27,7 @@ import (
 
 var (
 	PDCPApiKey               = ""
-	DEFAULT_FEILD_CHAR_LIMIT = env.GetEnvOrDefault("DEFAULT_FEILD_CHAR_LIMIT", 20)
+	DEFAULT_FIELD_CHAR_LIMIT = env.GetEnvOrDefault("DEFAULT_FIELD_CHAR_LIMIT", 20)
 )
 
 func init() {
@@ -128,7 +128,7 @@ func ParseOptions() *Options {
 		flagset.DynamicVarP(&options.HasNucleiTemplate, "template", "t", "true", "display cves that has public nuclei templates"),
 		flagset.DynamicVar(&options.HasPoc, "poc", "true", "display cves that has public published poc"),
 		flagset.DynamicVarP(&options.Hackerone, "hackerone", "h1", "true", "display cves reported on hackerone"),
-		flagset.DynamicVarP(&options.RemotlyExploitable, "remote", "re", "true", "display remotely exploitable cves (AV:N & PR:N | PR:L)"),
+		flagset.DynamicVarP(&options.RemotelyExploitable, "remote", "re", "true", "display remotely exploitable cves (AV:N & PR:N | PR:L)"),
 	)
 
 	flagset.CreateGroup("OUTPUT", "output",
@@ -529,8 +529,8 @@ func getCellValueByLimit(cell interface{}) string {
 		return ""
 	}
 	cellValue := fmt.Sprintf("%v", cell)
-	if len(cellValue) > DEFAULT_FEILD_CHAR_LIMIT {
-		cellValue = cellValue[:DEFAULT_FEILD_CHAR_LIMIT] + "..."
+	if len(cellValue) > DEFAULT_FIELD_CHAR_LIMIT {
+		cellValue = cellValue[:DEFAULT_FIELD_CHAR_LIMIT] + "..."
 	}
 	return cellValue
 }
@@ -675,7 +675,7 @@ func constructQueryParams(opts *Options) string {
 	case "false":
 		queryParams.Add("is_poc", "false")
 	}
-	if opts.RemotlyExploitable == "true" {
+	if opts.RemotelyExploitable == "true" {
 		queryParams.Add("is_remote", "true")
 	}
 	subQuery := ""
@@ -821,7 +821,7 @@ func constructQueryByOptions(opts Options) string {
 	} else {
 		query = fmt.Sprintf("%s sort_desc:cve_id", query)
 	}
-	if opts.RemotlyExploitable == "true" {
+	if opts.RemotelyExploitable == "true" {
 		query = fmt.Sprintf("%s is_remote:true", query)
 	}
 

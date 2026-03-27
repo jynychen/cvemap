@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"log"
 
-	"github.com/projectdiscovery/vulnx"
+	"github.com/projectdiscovery/vulnx/v2"
 )
 
 func ExampleRender() {

@@ -17,7 +17,7 @@
 
 ```bash
 # 1. Get vulnx
-go install github.com/projectdiscovery/vulnx/cmd/vulnx@latest
+go install github.com/projectdiscovery/vulnx/v2/cmd/vulnx@latest
 
 # 2. Explore commands
 vulnx --help
